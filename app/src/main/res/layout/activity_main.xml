@@ -9,47 +9,58 @@
 
     <ImageView
         android:id="@+id/numbersBackground"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/imageButtonDivision"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:color/background_light" />
+        app:srcCompat="@android:color/background_light"
+        style="@style/background" />
 
-    <TextView
-        android:id="@+id/textViewBackground"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+    <ImageView
+        android:id="@+id/Background"
+        style="@style/background"
         android:layout_marginBottom="8dp"
-        android:background="#972f2f2f"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@color/half_gray" />
+
+    <TextView
+        android:id="@+id/textViewCalculate"
+        android:text="3+0.1415926 "
+        android:textColor="@android:color/black"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/textViewAnswer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        style="@style/number" />
+
+    <TextView
+        android:id="@+id/textViewAnswer"
+        style="@style/number"
+        android:text="3.1415926"
+        android:textColor="@android:color/background_light"
+        android:textSize="50sp"
+        app:layout_constraintBottom_toTopOf="@+id/imageButtonPercent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageButton
         android:id="@+id/imageButton0"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:background="#00000000"
-        android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/calculator_0" />
+        app:srcCompat="@drawable/calculator_0"
+        style="@style/button" />
 
     <ImageButton
         android:id="@+id/imageButton1"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:background="#00000000"
-        android:scaleType="fitXY"
+        style="@style/button"
         app:layout_constraintBottom_toTopOf="@+id/imageButton0"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="parent"
@@ -57,23 +68,16 @@
 
     <ImageButton
         android:id="@+id/imageButton2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:background="#00000000"
-        android:scaleType="fitXY"
+        style="@style/button"
         app:layout_constraintBottom_toTopOf="@+id/imageButtonDot"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:srcCompat="@drawable/calculator_2" />
 
     <ImageButton
         android:id="@+id/imageButton3"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:background="#00000000"
-        android:scaleType="fitXY"
+        style="@style/button"
         app:layout_constraintBottom_toTopOf="@+id/imageButtonEqual"
         app:layout_constraintEnd_toStartOf="@+id/guideline4"
         app:layout_constraintStart_toStartOf="@+id/guideline3"
@@ -81,11 +85,7 @@
 
     <ImageButton
         android:id="@+id/imageButton4"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:background="#00000000"
-        android:scaleType="fitXY"
+        style="@style/button"
         app:layout_constraintBottom_toTopOf="@+id/imageButton1"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="parent"
@@ -93,11 +93,7 @@
 
     <ImageButton
         android:id="@+id/imageButton5"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:background="#00000000"
-        android:scaleType="fitXY"
+        style="@style/button"
         app:layout_constraintBottom_toTopOf="@+id/imageButton2"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
@@ -105,11 +101,7 @@
 
     <ImageButton
         android:id="@+id/imageButton6"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:background="#00000000"
-        android:scaleType="fitXY"
+        style="@style/button"
         app:layout_constraintBottom_toTopOf="@+id/imageButton3"
         app:layout_constraintEnd_toStartOf="@+id/guideline4"
         app:layout_constraintStart_toStartOf="@+id/guideline3"
@@ -117,11 +109,7 @@
 
     <ImageButton
         android:id="@+id/imageButton7"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:background="#00000000"
-        android:scaleType="fitXY"
+        style="@style/button"
         app:layout_constraintBottom_toTopOf="@+id/imageButton4"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="parent"
@@ -129,11 +117,7 @@
 
     <ImageButton
         android:id="@+id/imageButton8"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:background="#00000000"
-        android:scaleType="fitXY"
+        style="@style/button"
         app:layout_constraintBottom_toTopOf="@+id/imageButton5"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
@@ -141,11 +125,7 @@
 
     <ImageButton
         android:id="@+id/imageButton9"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:background="#00000000"
-        android:scaleType="fitXY"
+        style="@style/button"
         app:layout_constraintBottom_toTopOf="@+id/imageButton6"
         app:layout_constraintEnd_toStartOf="@+id/guideline4"
         app:layout_constraintStart_toStartOf="@+id/guideline3"
@@ -153,11 +133,7 @@
 
     <ImageButton
         android:id="@+id/imageButtonDot"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:background="#00000000"
-        android:scaleType="fitXY"
+        style="@style/button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
@@ -165,11 +141,7 @@
 
     <ImageButton
         android:id="@+id/imageButtonEqual"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:background="#00000000"
-        android:scaleType="fitCenter"
+        style="@style/button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline3"
@@ -177,11 +149,7 @@
 
     <ImageButton
         android:id="@+id/imageButtonPlus"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:background="#00000000"
-        android:scaleType="fitXY"
+        style="@style/button"
         app:layout_constraintBottom_toTopOf="@+id/imageButtonEqual"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline4"
@@ -189,11 +157,7 @@
 
     <ImageButton
         android:id="@+id/imageButtonMinus"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:background="#00000000"
-        android:scaleType="fitXY"
+        style="@style/button"
         app:layout_constraintBottom_toTopOf="@+id/imageButtonPlus"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline4"
@@ -201,11 +165,7 @@
 
     <ImageButton
         android:id="@+id/imageButtonTime"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:background="#00000000"
-        android:scaleType="fitXY"
+        style="@style/button"
         app:layout_constraintBottom_toTopOf="@+id/imageButtonMinus"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline4"
@@ -213,11 +173,7 @@
 
     <ImageButton
         android:id="@+id/imageButtonDivision"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:background="#00000000"
-        android:scaleType="fitXY"
+        style="@style/button"
         app:layout_constraintBottom_toTopOf="@+id/imageButtonTime"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline4"
@@ -225,11 +181,7 @@
 
     <ImageButton
         android:id="@+id/imageButtonPercent"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:background="#00000000"
-        android:scaleType="fitXY"
+        style="@style/button"
         app:layout_constraintBottom_toTopOf="@+id/imageButton9"
         app:layout_constraintEnd_toStartOf="@+id/guideline4"
         app:layout_constraintStart_toStartOf="@+id/guideline3"
@@ -237,11 +189,7 @@
 
     <ImageButton
         android:id="@+id/imageButtonChangesign"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:background="#00000000"
-        android:scaleType="fitXY"
+        style="@style/button"
         app:layout_constraintBottom_toTopOf="@+id/imageButton8"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintHorizontal_bias="0.375"
@@ -250,11 +198,7 @@
 
     <ImageButton
         android:id="@+id/imageButtonReset"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:background="#00000000"
-        android:scaleType="fitXY"
+        style="@style/button"
         app:layout_constraintBottom_toTopOf="@+id/imageButton7"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="parent"
@@ -280,34 +224,5 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.75" />
-
-    <TextView
-        android:id="@+id/textViewCalculate"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:gravity="right"
-        android:text="3+0.1415926 "
-        android:textColor="@android:color/black"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/textViewAnswer"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/textViewAnswer"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:gravity="bottom|right"
-        android:text="3.1415926"
-        android:textColor="@android:color/background_light"
-        android:textSize="50sp"
-        app:layout_constraintBottom_toTopOf="@+id/imageButtonPercent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

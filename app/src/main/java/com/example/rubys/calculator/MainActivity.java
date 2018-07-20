@@ -50,68 +50,87 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             switch (view.getId()){
                 case R.id.Button0:
+                    if(expression.equals(""))afterCalculate =0;
                     expression +="0";
                     number +="0";
                     expressionTextView.setText(expression);
                     break;
                 case R.id.Button1:
+                    if(expression.equals(""))afterCalculate =0;
                     expression +="1";
                     number +="1";
                     expressionTextView.setText(expression);
                     break;
                 case R.id.Button2:
+                    if(expression.equals(""))afterCalculate =0;
                     expression +="2";
                     number +="2";
                     expressionTextView.setText(expression);
                     break;
                 case R.id.Button3:
+                    if(expression.equals(""))afterCalculate =0;
                     expression +="3";
                     number +="3";
                     expressionTextView.setText(expression);
                     break;
                 case R.id.Button4:
+                    if(expression.equals(""))afterCalculate =0;
                     expression +="4";
                     number +="4";
                     expressionTextView.setText(expression);
                     break;
                 case R.id.Button5:
+                    if(expression.equals(""))afterCalculate =0;
                     expression +="5";
                     number +="5";
                     expressionTextView.setText(expression);
                     break;
                 case R.id.Button6:
+                    if(expression.equals(""))afterCalculate =0;
                     expression +="6";
                     number +="6";
                     expressionTextView.setText(expression);
                     break;
                 case R.id.Button7:
+                    if(expression.equals(""))afterCalculate =0;
                     expression +="7";
                     number +="7";
                     expressionTextView.setText(expression);
                     break;
                 case R.id.Button8:
+                    if(expression.equals(""))afterCalculate =0;
                     expression +="8";
                     number +="8";
                     expressionTextView.setText(expression);
                     break;
                 case R.id.Button9:
+                    if(expression.equals(""))afterCalculate =0;
                     expression +="9";
                     number +="9";
                     expressionTextView.setText(expression);
                     break;
                 case R.id.dotButton:
+                    if(expression.equals(""))afterCalculate =0;
                     //FIXME only one dot each number (use do while?)
-                    expression +=".";
-                    number +=".";
-                    expressionTextView.setText(expression);
-                    break;
+                    if(tryParse() == null){
+                        break;
+                    }
+                    else {
+                        expression +=".";
+                        number +=".";
+                        expressionTextView.setText(expression);
+                        break;
+                    }
+
                 case R.id.equalButton:
                     calculate(sign);
-                    number = String.valueOf(afterCalculate);
+                    //number = String.valueOf(afterCalculate);
                     sign="";
-                    expression =expression + " = " + number;
+                    expression =expression + " = ";
                     expressionTextView.setText(expression);
-                    answerTextView.setText(number);
+                    answerTextView.setText(String.valueOf(afterCalculate));
+                    expression ="";
+                    number ="0";
                     break;
                 case R.id.plusButton:
                     calculate(sign);
@@ -149,7 +168,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     expressionTextView.setText(expression);
                     break;
                 case R.id.changeSignButton:
+                    if(Double.valueOf(number)==0) {
+                        break;
+                    }
+                    else if(Double.valueOf(number)>0){
+                        number = "-"+number;
 
+                        break;
+                    }
+                    else if (Double.valueOf(number)<0)
+                        number = String.valueOf(0 - Double.valueOf(number));
                     break;
                 case R.id.resetButton:
                     number = "0";
@@ -210,6 +238,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case "":
                 afterCalculate = (Double.valueOf(number))*0.01;
                 break;
+        }
+    }
+
+    private Integer tryParse(){
+        try{
+            return Integer.valueOf(number);
+        }catch (NumberFormatException e){
+            return null;
         }
     }
 }

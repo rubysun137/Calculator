@@ -5,17 +5,16 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import java.util.Arrays;
-import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private String expression="";
-    private String number ="0";
+    private String number ="";
     private TextView expressionTextView,answerTextView;
     private double afterCalculate =0;
     private String sign = "";
+
 
 
     @Override
@@ -51,136 +50,125 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             switch (view.getId()){
                 case R.id.Button0:
                     if(expression.equals(""))afterCalculate =0;
-                    expression +="0";
                     number +="0";
-                    expressionTextView.setText(expression);
+                    expressionTextView.setText(expression+number);
                     break;
                 case R.id.Button1:
                     if(expression.equals(""))afterCalculate =0;
-                    expression +="1";
                     number +="1";
-                    expressionTextView.setText(expression);
+                    expressionTextView.setText(expression+number);
                     break;
                 case R.id.Button2:
                     if(expression.equals(""))afterCalculate =0;
-                    expression +="2";
                     number +="2";
-                    expressionTextView.setText(expression);
+                    expressionTextView.setText(expression+number);
                     break;
                 case R.id.Button3:
                     if(expression.equals(""))afterCalculate =0;
-                    expression +="3";
                     number +="3";
-                    expressionTextView.setText(expression);
+                    expressionTextView.setText(expression+number);
                     break;
                 case R.id.Button4:
                     if(expression.equals(""))afterCalculate =0;
-                    expression +="4";
                     number +="4";
-                    expressionTextView.setText(expression);
+                    expressionTextView.setText(expression+number);
                     break;
                 case R.id.Button5:
                     if(expression.equals(""))afterCalculate =0;
-                    expression +="5";
                     number +="5";
-                    expressionTextView.setText(expression);
+                    expressionTextView.setText(expression+number);
                     break;
                 case R.id.Button6:
                     if(expression.equals(""))afterCalculate =0;
-                    expression +="6";
                     number +="6";
-                    expressionTextView.setText(expression);
+                    expressionTextView.setText(expression+number);
                     break;
                 case R.id.Button7:
                     if(expression.equals(""))afterCalculate =0;
-                    expression +="7";
                     number +="7";
-                    expressionTextView.setText(expression);
+                    expressionTextView.setText(expression+number);
                     break;
                 case R.id.Button8:
                     if(expression.equals(""))afterCalculate =0;
-                    expression +="8";
                     number +="8";
-                    expressionTextView.setText(expression);
+                    expressionTextView.setText(expression+number);
                     break;
                 case R.id.Button9:
                     if(expression.equals(""))afterCalculate =0;
-                    expression +="9";
                     number +="9";
-                    expressionTextView.setText(expression);
+                    expressionTextView.setText(expression+number);
                     break;
                 case R.id.dotButton:
                     if(expression.equals(""))afterCalculate =0;
-                    //FIXME only one dot each number (use do while?)
                     if(tryParse() == null){
                         break;
                     }
                     else {
-                        expression +=".";
                         number +=".";
-                        expressionTextView.setText(expression);
+                        expressionTextView.setText(expression+number);
                         break;
                     }
 
                 case R.id.equalButton:
-                    calculate(sign);
-                    //number = String.valueOf(afterCalculate);
+                    calculate(number);
                     sign="";
-                    expression =expression + " = ";
+                    expression =expression+number+" = ";
                     expressionTextView.setText(expression);
                     answerTextView.setText(String.valueOf(afterCalculate));
                     expression ="";
-                    number ="0";
+                    number ="";
                     break;
                 case R.id.plusButton:
-                    calculate(sign);
-                    number ="0";
-                    sign="+";
-                    expression +=" + ";
+                    calculate(number);
+                    sign=" + ";
+                    expression =expression+number+sign;
                     expressionTextView.setText(expression);
+                    number ="";
                     break;
                 case R.id.minusButton:
-                    calculate(sign);
-                    number ="0";
-                    sign="-";
-                    expression +=" - ";
+                    calculate(number);
+                    sign=" - ";
+                    expression =expression+number+sign;
                     expressionTextView.setText(expression);
+                    number ="";
+
                     break;
                 case R.id.timeButton:
-                    calculate(sign);
-                    number ="0";
-                    sign="*";
-                    expression +=" x ";
+                    calculate(number);
+                    sign=" x ";
+                    expression =expression+number+sign;
                     expressionTextView.setText(expression);
+                    number ="";
                     break;
                 case R.id.divisionButton:
-                    calculate(sign);
-                    number ="0";
-                    sign = "/";
-                    expression +=" ÷ ";
+                    calculate(number);
+                    sign=" ÷ ";
+                    expression =expression+number+sign;
                     expressionTextView.setText(expression);
+                    number ="";
                     break;
                 case R.id.percentButton:
                     calculate(sign,number);
-                    number="0";
-                    sign="";
-                    expression +="% ";
+                    expression =expression+number+"%";
                     expressionTextView.setText(expression);
+                    number="";
+                    sign="";
                     break;
                 case R.id.changeSignButton:
-                    if(Double.valueOf(number)==0) {
+                    if(number.equals("0") || number.equals("")) {
                         break;
                     }
                     else if(Double.valueOf(number)>0){
                         number = "-"+number;
-
+                        expressionTextView.setText(expression+number);
                         break;
                     }
                     else if (Double.valueOf(number)<0)
-                        number = String.valueOf(0 - Double.valueOf(number));
+                        number = number.replace("-","");
+                        expressionTextView.setText(expression+number);
                     break;
                 case R.id.resetButton:
-                    number = "0";
+                    number = "";
                     afterCalculate =0;
                     sign ="";
                     expression = "";
@@ -190,49 +178,42 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
 
         }
-    public List<String> getNumbers() {
-        String[] numbers = expression.split(" ");
-        return Arrays.asList(numbers);
-    }
-    private void calculate(String sign){
+
+    private void calculate(String number){
+
+        if(number.equals(""))number = "0";
+
         switch (sign){
-            case "+":
+            case " + ":
                 afterCalculate = afterCalculate +Double.valueOf(number);
                 break;
-            case "-":
+            case " - ":
                 afterCalculate = afterCalculate -Double.valueOf(number);
                 break;
-            case "*":
+            case " x ":
                 afterCalculate = afterCalculate *Double.valueOf(number);
                 break;
-            case "/":
+            case " ÷ ":
                 afterCalculate = afterCalculate /Double.valueOf(number);
                 break;
             case "":
                 afterCalculate = afterCalculate +Double.valueOf(number);
                 break;
-            //case "%":
-            //    if (afterCalculate ==0){
-            //        afterCalculate = Double.valueOf(number)*0.01;
-            //    }else{
-            //        afterCalculate = Double.valueOf(number);
-            //    }
-            //
-            //    break;
         }
     }
     private void calculate(String sign,String number){
+        if(number.equals(""))number = "0";
         switch (sign) {
-            case "+":
+            case " + ":
                 afterCalculate = afterCalculate + (afterCalculate*(Double.valueOf(number))*0.01);
                 break;
-            case "-":
+            case " - ":
                 afterCalculate = afterCalculate - (afterCalculate*(Double.valueOf(number))*0.01);
                 break;
-            case "*":
+            case " x ":
                 afterCalculate = afterCalculate * ((Double.valueOf(number))*0.01);
                 break;
-            case "/":
+            case " ÷ ":
                 afterCalculate = afterCalculate / ((Double.valueOf(number))*0.01);
                 break;
             case "":

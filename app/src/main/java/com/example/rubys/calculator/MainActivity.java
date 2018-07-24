@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -13,9 +14,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private String number ="";
     private TextView expressionTextView,answerTextView;
     private double afterCalculate =0;
+    private double afterCalculateTAndD =0;
     private String sign = "";
-
-
+    private String signTAndD = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +44,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.percentButton).setOnClickListener(this);
         findViewById(R.id.changeSignButton).setOnClickListener(this);
         findViewById(R.id.resetButton).setOnClickListener(this);
+
     }
         @Override
         public void onClick(View view) {
@@ -111,15 +113,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 case R.id.equalButton:
                     calculate(number);
+                    calcutlateTAndD(signTAndD);
                     sign="";
                     expression =expression+number+" = ";
                     expressionTextView.setText(expression);
-                    answerTextView.setText(String.valueOf(afterCalculate));
+                    DecimalFormat df = new DecimalFormat("#.########");
+                    String answer =df.format(afterCalculate);
+                    answerTextView.setText(answer);
                     expression ="";
                     number ="";
                     break;
                 case R.id.plusButton:
                     calculate(number);
+                    calcutlateTAndD(signTAndD);
                     sign=" + ";
                     expression =expression+number+sign;
                     expressionTextView.setText(expression);
@@ -127,6 +133,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     break;
                 case R.id.minusButton:
                     calculate(number);
+                    calcutlateTAndD(signTAndD);
                     sign=" - ";
                     expression =expression+number+sign;
                     expressionTextView.setText(expression);
@@ -134,19 +141,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                     break;
                 case R.id.timeButton:
-                    calculate(number);
-                    sign=" x ";
-                    expression =expression+number+sign;
+                    if(sign.equals(" x ") || sign.equals(" ÷ ")){
+                        calculate(number);
+                    }else {
+                        signTAndD = sign;
+                        afterCalculateTAndD = Double.valueOf(number);
+                    }
+                    sign = " x ";
+                    expression = expression + number + sign;
                     expressionTextView.setText(expression);
-                    number ="";
+                    number = "";
                     break;
                 case R.id.divisionButton:
-                    calculate(number);
+                    if(sign.equals(" x ") || sign.equals(" ÷ ")){
+                        calculate(number);
+                    }else {
+                        signTAndD = sign;
+                        afterCalculateTAndD = Double.valueOf(number);
+                    }
                     sign=" ÷ ";
-                    expression =expression+number+sign;
+                    expression = expression + number + sign;
                     expressionTextView.setText(expression);
-                    number ="";
-                    break;
+                    number = "";
+                        break;
+
                 case R.id.percentButton:
                     calculate(sign,number);
                     expression =expression+number+"%";
@@ -191,10 +209,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 afterCalculate = afterCalculate -Double.valueOf(number);
                 break;
             case " x ":
-                afterCalculate = afterCalculate *Double.valueOf(number);
+                afterCalculateTAndD = afterCalculateTAndD *Double.valueOf(number);
                 break;
             case " ÷ ":
-                afterCalculate = afterCalculate /Double.valueOf(number);
+                afterCalculateTAndD = afterCalculateTAndD /Double.valueOf(number);
                 break;
             case "":
                 afterCalculate = afterCalculate +Double.valueOf(number);
@@ -220,6 +238,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 afterCalculate = (Double.valueOf(number))*0.01;
                 break;
         }
+    }
+
+    private void calcutlateTAndD(String sign){
+        switch (sign){
+            case " + ":
+                afterCalculate = afterCalculate + afterCalculateTAndD;
+                break;
+            case " - ":
+                afterCalculate = afterCalculate - afterCalculateTAndD;
+                break;
+            case "":
+                afterCalculate = afterCalculate + afterCalculateTAndD;
+                break;
+        }
+        afterCalculateTAndD =0;
+        signTAndD ="";
     }
 
     private Integer tryParse(){
